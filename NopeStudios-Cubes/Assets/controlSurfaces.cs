@@ -41,8 +41,11 @@ public class controlSurfaces : MonoBehaviour {
 
     void FixedUpdate()
     {
-        JointSpring hingeSpring = hinge.spring;
-        hingeSpring.targetPosition = rotation;
-        hinge.spring = hingeSpring;
+        if (hinge)
+        {
+            JointSpring hingeSpring = hinge.spring;
+            hingeSpring.targetPosition = rotation;
+            hinge.spring = hingeSpring;
+        }
     }
 }
