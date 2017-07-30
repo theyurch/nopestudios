@@ -14,7 +14,7 @@ public class wingPhys : MonoBehaviour {
     // public float maxLiftForce = 1000f;
   //  Queue magQueue = new Queue();
   //  public int forceInterp = 5;
-    float maxDelta = 1.0f;
+  //  float maxDelta = 1.0f;
     float lastMag;
     //public float liftDamp = 0.65f;
     public float minDrag = 0.05f;

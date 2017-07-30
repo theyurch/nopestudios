@@ -19,13 +19,13 @@ public class WheelControl : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
-        body = transform.FindChild("Base").gameObject;
-        fL = transform.FindChild("WheelFL").gameObject.GetComponent<WheelCollider>();
-        fR = transform.FindChild("WheelFR").gameObject.GetComponent<WheelCollider>();
-        mL = transform.FindChild("WheelML").gameObject.GetComponent<WheelCollider>();
-        mR = transform.FindChild("WheelMR").gameObject.GetComponent<WheelCollider>();
-        rL = transform.FindChild("WheelRL").gameObject.GetComponent<WheelCollider>();
-        rR = transform.FindChild("WheelRR").gameObject.GetComponent<WheelCollider>();
+        body = transform.Find("Base").gameObject;
+        fL = transform.Find("WheelFL").gameObject.GetComponent<WheelCollider>();
+        fR = transform.Find("WheelFR").gameObject.GetComponent<WheelCollider>();
+        mL = transform.Find("WheelML").gameObject.GetComponent<WheelCollider>();
+        mR = transform.Find("WheelMR").gameObject.GetComponent<WheelCollider>();
+        rL = transform.Find("WheelRL").gameObject.GetComponent<WheelCollider>();
+        rR = transform.Find("WheelRR").gameObject.GetComponent<WheelCollider>();
 
         rev = body.GetComponent<AudioSource>();
 

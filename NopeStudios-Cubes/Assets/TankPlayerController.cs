@@ -26,17 +26,17 @@ public class TankPlayerController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        body = transform.parent.FindChild("Base").gameObject;
-        turretBase = transform.parent.FindChild("TurretBase").gameObject;
-        barrelBase = transform.parent.FindChild("BarrelBase").gameObject;
+        body = transform.parent.Find("Base").gameObject;
+        turretBase = transform.parent.Find("TurretBase").gameObject;
+        barrelBase = transform.parent.Find("BarrelBase").gameObject;
         wheelController = transform.parent.GetComponent<WheelControl>();
         turretController = turretBase.transform.GetComponent<TurretSolver>();
         gunTarget = turretBase.transform.position + turretBase.transform.forward * gunTargetDist;
         turretController.target = Vector3.zero;
         crosshairs = GetComponentsInChildren<LineRenderer>();
         lastTransform = turretBase.transform.position;
-        barrelEnd = transform.parent.FindChild("Barrel").gameObject;
-        headerIcon = transform.FindChild("TurretHeading").gameObject;
+        barrelEnd = transform.parent.Find("Barrel").gameObject;
+        headerIcon = transform.Find("TurretHeading").gameObject;
         gunCamera = turretBase.transform.Find("Camera").gameObject.GetComponent<Camera>();
         fireCalc = GetComponent<FireControl>();
         if (playerControlled)
