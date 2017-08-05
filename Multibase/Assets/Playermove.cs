@@ -58,7 +58,7 @@ public class Playermove : NetworkBehaviour
         // moveDir = new Vector3(x, 0, z);
 
         bodyRigid.AddForceAtPosition
-            (moveDir.normalized * 5, 
+            (moveDir.normalized * 7, 
             bodyPos.position, 
             ForceMode.Acceleration);
         
