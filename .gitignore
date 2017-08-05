@@ -28,3 +28,5 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+Multibase/nettest_Data/output_log\.txt
