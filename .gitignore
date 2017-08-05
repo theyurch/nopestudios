@@ -29,4 +29,6 @@ sysinfo.txt
 *.apk
 *.unitypackage
 
+*.bin
+
 Multibase/nettest_Data/output_log\.txt
