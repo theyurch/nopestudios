@@ -16,6 +16,8 @@ public class GunshipPlayer : NetworkBehaviour
 
     float x, z;
     bool y;
+    bool r;
+
     //GameObject cubeCamera;
     /*
     void OnNetworkInstantiate(NetworkMessageInfo info)
@@ -34,12 +36,13 @@ public class GunshipPlayer : NetworkBehaviour
          bodyPos = body.GetComponent<Transform>();
          bodyRigid = body.GetComponent<Rigidbody>();
          */
-        //body = this.gameObject;
-        body = transform.Find("Body").gameObject;
+        body = this.gameObject;
+        //body = transform.Find("Body").gameObject;
         //bodyPos = body.GetComponent<Transform>();
         bodyRigid = body.GetComponent<Rigidbody>();
         //cubeCamera = transform.Find("Camera").gameObject;
-        bodyPos = transform.Find("Body").gameObject.GetComponent<Transform>();
+        //bodyPos = transform.Find("Body").gameObject.GetComponent<Transform>();
+        bodyPos = this.gameObject.GetComponent<Transform>();
         //liftPoint = transform.Find("LiftPoint").gameObject.GetComponent<Rigidbody>();
 
         if (isLocalPlayer)
@@ -47,6 +50,23 @@ public class GunshipPlayer : NetworkBehaviour
             Camera.main.GetComponent<CameraScript>().target = bodyPos;
         }
 
+    }
+    /*
+    [ClientRpc]
+    void RpcRespawn()
+    {
+        if (isLocalPlayer)
+        {
+            transform.position = Vector3.zero;
+        }
+    }
+    */
+    void Relocate()
+    {
+        if (isLocalPlayer)
+        {
+            transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
+        }
     }
 
     // Update is called once per frame
@@ -60,7 +80,12 @@ public class GunshipPlayer : NetworkBehaviour
         x = Input.GetAxis("Horizontal");
         z = Input.GetAxis("Vertical");
         y = Input.GetButton("Jump");
-
+        r = Input.GetKey("r");
+        if (r)
+        {
+            Relocate();
+          // RpcRespawn();
+        }
       //  var vectFor = new Vector3(x, z, 0);
       //  moveDir = bodyPos.rotation * vectFor;
 

@@ -6,11 +6,8 @@ using UnityEngine;
 public class wingPhys : MonoBehaviour
 {
 
-    public Rigidbody wingRigidbody; //the physics actor we're going to act on
-    Transform wingLocation;    //the location of the wing script
-    Vector3 wingVelocity; //this will take angular velocity into account
-    public Vector3 planeAngle = new Vector3(0,1,0); //What angle does this airfoil create forces on? Default is a horizontal wing orientation
-
+    public Rigidbody wingRigidbody;
+    public Transform wingLocation;
     public float airDensity = 1.3f;
     public float wingArea = 0.5f;
     public float camberLift = 0.0f;
@@ -24,8 +21,7 @@ public class wingPhys : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        wingLocation = this.transform;
-        //wingRigidbody = GetComponent<Rigidbody>();
+        wingRigidbody = GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -34,7 +30,6 @@ public class wingPhys : MonoBehaviour
     }
     void FixedUpdate()
     {
-        wingVelocity = wingRigidbody.GetPointVelocity(wingLocation.position);
         //This script acts on the 'up' axis of the attached rigidbody. I should probably add support for other axis.
 
         //thin airfoil theory:
@@ -43,7 +38,7 @@ public class wingPhys : MonoBehaviour
 
         //lift force = 1/2 (air density) * vel^2 * wing area * lift coefficent at desired angle
         //lift is perpendicular to flow direction
-        float AoA = Mathf.Deg2Rad * (Vector3.Angle(transform.up, wingVelocity) - 90.0f);
+        float AoA = Mathf.Deg2Rad * (Vector3.Angle(transform.up, wingRigidbody.velocity) - 90.0f);
         
         float liftCoefficient = camberLift + (2 * Mathf.PI * AoA);
 
@@ -60,8 +55,8 @@ public class wingPhys : MonoBehaviour
 
 
         //Debug.Log(liftCoefficient);
-        //float liftMag = Mathf.Clamp(0.5f * airDensity * wingVelocity.sqrMagnitude * wingArea * liftCoefficient, maxLiftForce * -1, maxLiftForce);
-        float liftMag = 0.5f * airDensity * wingVelocity.sqrMagnitude * wingArea * liftCoefficient;
+        //float liftMag = Mathf.Clamp(0.5f * airDensity * wingRigidbody.velocity.sqrMagnitude * wingArea * liftCoefficient, maxLiftForce * -1, maxLiftForce);
+        float liftMag = 0.5f * airDensity * wingRigidbody.velocity.sqrMagnitude * wingArea * liftCoefficient;
 
         //we have problems with 'boundry wiggle', caused by rapid shifts in force direction. 
         //This happens when the airfoils are flying 'straight' and fast, and is possibly a problem due to simulation tickrate
@@ -72,11 +67,10 @@ public class wingPhys : MonoBehaviour
         liftVisual = liftMag * 0.01f;
 
         //drag
-        //wingRigidbody.AddForce(((Mathf.Abs(liftCoefficient) / 6.0f) + minDrag) * -0.5f * wingVelocity.sqrMagnitude * wingVelocity.normalized, ForceMode.Force);
-        wingRigidbody.AddForceAtPosition(((Mathf.Abs(liftCoefficient) / 6.0f) + minDrag) * -0.5f * wingVelocity.sqrMagnitude * wingVelocity.normalized, wingLocation.position, ForceMode.Force);
+        wingRigidbody.AddForce(((Mathf.Abs(liftCoefficient) / 6.0f) + minDrag) * -0.5f * wingRigidbody.velocity.sqrMagnitude * wingRigidbody.velocity.normalized, ForceMode.Force);
 
         //lift
-        wingRigidbody.AddForceAtPosition(wingLocation.rotation * planeAngle * liftMag, wingLocation.position + wingLocation.forward * liftOffset, ForceMode.Force);
+        wingRigidbody.AddForceAtPosition(wingRigidbody.transform.up * liftMag, wingRigidbody.position + wingRigidbody.transform.forward * liftOffset, ForceMode.Force);
 
 
 
@@ -86,9 +80,9 @@ public class wingPhys : MonoBehaviour
         if (wingRigidbody)
         {
             Gizmos.color = Color.magenta;
-            Gizmos.DrawRay(wingLocation.position + wingRigidbody.transform.forward * liftOffset, wingLocation.rotation * planeAngle * liftVisual);
+            Gizmos.DrawRay(wingRigidbody.position + wingRigidbody.transform.forward * liftOffset, wingRigidbody.transform.up * liftVisual);
             Gizmos.color = Color.yellow;
-            Gizmos.DrawRay(wingLocation.position, wingVelocity);
+            Gizmos.DrawRay(wingRigidbody.position, wingRigidbody.velocity);
         }
 
     }
