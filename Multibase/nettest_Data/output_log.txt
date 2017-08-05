@@ -19,13 +19,13 @@ Platform assembly: F:\Nope\nopestudios\Multibase\nettest_Data\Managed\UnityEngin
 Loading F:\Nope\nopestudios\Multibase\nettest_Data\Managed\UnityEngine.Timeline.dll into Unity Child Domain
 Platform assembly: F:\Nope\nopestudios\Multibase\nettest_Data\Managed\System.dll (this message is harmless)
 Platform assembly: F:\Nope\nopestudios\Multibase\nettest_Data\Managed\System.Core.dll (this message is harmless)
-- Completed reload, in  0.016 seconds
+- Completed reload, in  0.021 seconds
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 1.225134 ms
+UnloadTime: 1.405180 ms
 Setting up 4 worker threads for Enlighten.
-  Thread -> id: 13a4 -> priority: 1 
-  Thread -> id: 2f1c -> priority: 1 
-  Thread -> id: 3578 -> priority: 1 
-  Thread -> id: 6c -> priority: 1 
+  Thread -> id: 612c -> priority: 1 
+  Thread -> id: 6144 -> priority: 1 
+  Thread -> id: 6174 -> priority: 1 
+  Thread -> id: 5c08 -> priority: 1 
