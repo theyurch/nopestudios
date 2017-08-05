@@ -89,7 +89,7 @@ public class GunshipPlayer : NetworkBehaviour
 
 
 
-        Camera.main.GetComponent<CameraScript>().camModify = new Vector3(Input.GetAxis("Right Vertical") * 10, Input.GetAxis("Right Horizontal") * 10, 0);
+        Camera.main.GetComponent<CameraScript>().camModify = new Vector3(0, Input.GetAxis("Right Horizontal") * 80, 0/*Input.GetAxis("Right Vertical") * 80*/);
         //Debug.Log(new Vector3(Input.GetAxis("Right Vertical"), 0, Input.GetAxis("Right Horizontal")));
 
         if (r || fire3)
