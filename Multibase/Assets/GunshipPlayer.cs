@@ -17,6 +17,10 @@ public class GunshipPlayer : NetworkBehaviour
     float x, z;
     bool y;
     bool r;
+    bool fire3;
+
+
+    public Vector3 CameraRotation = Vector3.zero;
 
     //GameObject cubeCamera;
     /*
@@ -81,7 +85,14 @@ public class GunshipPlayer : NetworkBehaviour
         z = Input.GetAxis("Vertical");
         y = Input.GetButton("Jump");
         r = Input.GetKey("r");
-        if (r)
+        fire3 = Input.GetButton("Fire3");
+
+
+
+        Camera.main.GetComponent<CameraScript>().camModify = new Vector3(Input.GetAxis("Right Vertical") * 10, Input.GetAxis("Right Horizontal") * 10, 0);
+        //Debug.Log(new Vector3(Input.GetAxis("Right Vertical"), 0, Input.GetAxis("Right Horizontal")));
+
+        if (r || fire3)
         {
             Relocate();
           // RpcRespawn();

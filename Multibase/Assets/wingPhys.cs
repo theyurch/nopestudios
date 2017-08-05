@@ -17,13 +17,15 @@ public class wingPhys : MonoBehaviour
     public float liftOffset = 0.25f;
     float liftVisual;
     public float stallThreshold = 1.5f;
- 
+
+
     float lastMag;
     public float minDrag = 0.05f;
 
     // Use this for initialization
     void Start()
     {
+
         wingLocation = this.transform;
         //wingRigidbody = GetComponent<Rigidbody>();
     }
