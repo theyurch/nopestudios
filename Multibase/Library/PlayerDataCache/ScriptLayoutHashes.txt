@@ -137,3 +137,4 @@ bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.Audi
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.SpatialMappingRenderer
 72d2bb07cc101f76eeb99bff8a1702ce Assembly-CSharp.dll:.FPSPlayerScript
+710f7ddf461583ef425d99b8b9127e9a Assembly-CSharp.dll:.FPSMovementRegular

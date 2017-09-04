@@ -25,7 +25,6 @@ public class FPSPlayerScript : NetworkBehaviour
     // Use this for initialization
     void Start () {
 
-        //body = transform.Find("Capsule").gameObject;
         body = this.gameObject;
         bodyRigid = body.GetComponent<Rigidbody>();
         bodyPos = body.GetComponent<Transform>();
@@ -101,11 +100,11 @@ public class FPSPlayerScript : NetworkBehaviour
     }
     void OnDrawGizmos()
     {
-        // if ()
-        // {
+         if (bodyPos)
+         {
         Gizmos.color = Color.green;
         Gizmos.DrawRay(bodyPos.position, bodyPos.forward);
-        // }
+         }
 
     }
 }

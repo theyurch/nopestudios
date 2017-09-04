@@ -20,17 +20,17 @@ public class CameraScript : MonoBehaviour {
 }
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void LateUpdate () {
         
         if (target)
         {
-            lastRot = Quaternion.Lerp(lastRot, Quaternion.LookRotation(target.position - transform.position), delayFactor);
-            
+            //lastRot = Quaternion.Lerp(lastRot, Quaternion.LookRotation(target.position - transform.position), delayFactor);
+            lastRot = target.rotation;
             transform.rotation = lastRot;
             lastLoc = Vector3.Lerp(lastLoc, target.position, delayFactor);
-            //Debug.Log(camModify);
-            
-           // transform.Rotate(camModify);
+
+            //lastLoc = target.position;
+           
             offRot = Quaternion.Euler(camModify);
             transform.position = lastLoc + ((offRot * target.rotation) * offset);
             
