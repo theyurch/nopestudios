@@ -1,4 +1,0 @@
-sceneSetups:
-- path: Assets/World/offline.unity
-  isLoaded: 1
-  isActive: 1
